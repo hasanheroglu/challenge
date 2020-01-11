@@ -21,17 +21,17 @@ public class PostController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<PostEntity> read(@RequestParam("id") Long id){
+    public ResponseEntity<PostEntity> read(@PathVariable("id") Long id){
         return new ResponseEntity<PostEntity>(postService.read(id), HttpStatus.OK);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<PostEntity> update(@RequestParam("id") Long id, @RequestParam PostDto postDto){
+    public ResponseEntity<PostEntity> update(@PathVariable("id") Long id, @RequestBody PostDto postDto){
         return new ResponseEntity<PostEntity>(postService.update(id, postDto), HttpStatus.OK);
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<PostEntity> delete(@RequestParam("id") Long id){
+    public ResponseEntity<PostEntity> delete(@PathVariable("id") Long id){
         return new ResponseEntity<PostEntity>(postService.delete(id), HttpStatus.OK);
     }
 }
