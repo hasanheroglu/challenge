@@ -31,6 +31,11 @@ public class PostServiceImpl implements PostService {
     }
 
     @Override
+    public Iterable<PostEntity> readAll() {
+        return postRepository.findAll();
+    }
+
+    @Override
     public PostEntity update(Long id, PostDto postDto) {
         Optional<PostEntity> optionalPost = postRepository.findById(id);
 

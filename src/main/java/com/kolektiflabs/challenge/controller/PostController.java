@@ -25,6 +25,11 @@ public class PostController {
         return new ResponseEntity<PostEntity>(postService.read(id), HttpStatus.OK);
     }
 
+    @GetMapping
+    public ResponseEntity<Iterable<PostEntity>> readAll(){
+        return new ResponseEntity<Iterable<PostEntity>>(postService.readAll(), HttpStatus.OK);
+    }
+
     @PutMapping("/{id}")
     public ResponseEntity<PostEntity> update(@PathVariable("id") Long id, @RequestBody PostDto postDto){
         return new ResponseEntity<PostEntity>(postService.update(id, postDto), HttpStatus.OK);
