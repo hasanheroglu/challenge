@@ -15,6 +15,11 @@ public class PostController {
     @Autowired
     private PostService postService;
 
+    @GetMapping
+    public ResponseEntity<Iterable<PostEntity>> readAll(){
+        return new ResponseEntity<Iterable<PostEntity>>(postService.readAll(), HttpStatus.OK);
+    }
+
     @PostMapping
     public ResponseEntity<PostEntity> create(@RequestBody PostDto postDto){
         return new ResponseEntity<PostEntity>(postService.create(postDto), HttpStatus.OK);
@@ -23,11 +28,6 @@ public class PostController {
     @GetMapping("/{id}")
     public ResponseEntity<PostEntity> read(@PathVariable("id") Long id){
         return new ResponseEntity<PostEntity>(postService.read(id), HttpStatus.OK);
-    }
-
-    @GetMapping
-    public ResponseEntity<Iterable<PostEntity>> readAll(){
-        return new ResponseEntity<Iterable<PostEntity>>(postService.readAll(), HttpStatus.OK);
     }
 
     @PutMapping("/{id}")
